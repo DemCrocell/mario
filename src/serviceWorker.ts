@@ -31,6 +31,7 @@ const onstatechange = (
   config?: Config,
 ) => () => {
   if (installingWorker.state === 'installed') {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     let consoleMessage = `New content is available and will be used when all 
 							tabs for this page are closed. See https://bit.ly/CRA-PWA.`;
     if (navigator.serviceWorker.controller) {
@@ -52,7 +53,6 @@ const onstatechange = (
         config.onSuccess(registration);
       }
     }
-    console.log(consoleMessage);
   }
 };
 
@@ -119,6 +119,7 @@ export const register = (config?: Config): void => {
         // Add some additional logging to localhost, pointing developers to the
         // service worker/PWA documentation.
         await navigator.serviceWorker.ready;
+        // eslint-disable-next-line no-console
         console.log(
           `This web app is being served cache-first by a service 
 					worker. To learn more, visit https://bit.ly/CRA-PWA`

@@ -1,7 +1,7 @@
 import React, { FC, memo } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import {PATH_BASE} from 'src/constants/routes';
+import { PATH_BASE } from 'src/constants/routes';
 import Home from 'src/components/Home';
 
 const App: FC = () => (

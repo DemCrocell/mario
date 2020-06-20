@@ -26,6 +26,7 @@ function* callApiSaga(action: IActionData<IData>): SagaIterator {
     const response = yield call(callApi, options);
     yield put({ type: action.success, payload: response.data });
     if (successMessage) {
+      // eslint-disable-next-line no-console
       console.assert(successMessage);
     }
   } catch (error) {
@@ -34,11 +35,9 @@ function* callApiSaga(action: IActionData<IData>): SagaIterator {
     if (errorResponse?.status) {
       switch (errorResponse.status) {
         case UNAUTHORIZED:
-          console.error(`Error: ${UNAUTHORIZED}`);
-          break;
+          throw new Error(`Error: ${UNAUTHORIZED}`);
         case BAD_REQURST:
-          console.error(`Error: ${BAD_REQURST}`);
-          break;
+          throw new Error(`Error: ${BAD_REQURST}`);
         default:
           break;
       }
